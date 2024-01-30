@@ -7,7 +7,7 @@ for n in range(num):
     total_sum += numbers
 
 average = total_sum / num
-print("The average is:", average)
+print("The average is:", +average)
 
 
 
