@@ -1,5 +1,4 @@
-# How to get time of a pyhton program execution 
-import time
+# How to get time of a pyhton program execution import time
 def myFunc():
     start_time = time.time()
     s = 0
