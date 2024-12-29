@@ -1,25 +1,33 @@
-import numpy as np
+# from chatterbot import ChatBot
+# from chatterbot.trainers import ListTrainer
+# my_bot = ChatBot(name = 'PyBot', read_only= True, logic_adapters= ['chatterbot.logic.mathematicalEvaluation', 'chatterbot.logic.BestMatch'])
+from chatterbot import ChatBot
+from chatterbot.trainers import ListTrainer
 
-class chatBot():
-    def __init__(self, name):
-        print("-----starting up", name, "-----")
-        self.name = name
+# Create a chatbot instance
+my_bot = ChatBot(
+    name='PyBot',
+    read_only=True,
+    logic_adapters=[
+        'chatterbot.logic.mathematical_evaluation.MathematicalEvaluation',
+        'chatterbot.logic.BestMatch'
+    ]
+)
 
-if __name__ == "__main__":
-    ai = chatBot(name="dev")
+# Train the chatbot (if needed)
+# trainer = ListTrainer(my_bot)
+# trainer.train([
+#     "Hi there!",
+#     "Hello!",
+#     "How are you?",
+#     "I'm good, thank you.",
+#     "That's great to hear!",
+#     "Thank you.",
+#     "You're welcome."
+# ])
 
-    import speech_recognition as sr
-    def speech_to_text(self):
-        recognizer= sr.Recognizer()
-        with sr.Microphone() as mic:
-            print("Listening.............")
-            audio = recognizer.listen(mic)
-            try:
-                self.text = recognizer.recognize_google(audio)
-                print("me--->" , self.text)
-            except:
-                print("me---> Error" )
-
-                if __name__== "__main__":
-                    ai = chatBot(name="dev")
-                    while True:
+# Example conversation loop
+while True:
+    user_input = input("You: ")
+    response = my_bot.get_response(user_input)
+    print("Bot:", response)
